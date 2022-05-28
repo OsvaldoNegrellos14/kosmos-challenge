@@ -20,13 +20,11 @@ export const App = () => {
       ...dataInput,
       id: Math.floor(Math.random() * 100)
     };
-    console.log(newElementsForm);
-    setElementsForm([...elementsForm, dataInput]);
+    setElementsForm([...elementsForm, newElementsForm]);
   }
 
   const removeInputForm = (e, index) => {
     e.preventDefault();
-    console.log('entro')
     setElementsForm(elementsForm.filter((item) => item.id !== index));
   }
 
