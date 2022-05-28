@@ -1,25 +1,62 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
+import data from './mocks/data.json';
+import { RadioInput } from './components/RadioInput';
+import { SelectInput } from './components/SelectInput';
+import { TextInput } from './components/TextInput';
 
-function App() {
+
+export const App = () => {
+
+  const [listInputs, setListInputs] = useState([]);
+  const [elementsForm, setElementsForm] = useState([]);
+  useEffect(() => {
+    setListInputs(data);
+  }, [listInputs, elementsForm]);
+
+  const addInputForm = (e, dataInput) => {
+    e.preventDefault();
+    const newElementsForm = {
+      ...dataInput,
+      id: Math.floor(Math.random() * 100)
+    };
+    console.log(newElementsForm);
+    setElementsForm([...elementsForm, dataInput]);
+  }
+
+  const removeInputForm = (e, index) => {
+    e.preventDefault();
+    console.log('entro')
+    setElementsForm(elementsForm.filter((item) => item.id !== index));
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="list-inputs">
+        <h2>List Inputs</h2>
+        {listInputs.map((item, index) => {
+          if (item.type === 'radio') {
+            return <RadioInput key={index} dataInput={item} addInputForm={addInputForm} />
+          } else if (item.type === 'select') {
+            return <SelectInput key={index} dataInput={item} addInputForm={addInputForm} />
+          } else {
+            return <TextInput key={index} dataInput={item} addInputForm={addInputForm} />
+          }
+        })}
+      </div>
+      <div className="form-inputs">
+        <h2>Form preview</h2>
+
+        {elementsForm.map((item, index) => {
+          if (item.type === 'radio') {
+            return <RadioInput key={index} dataInput={item} addInputForm={addInputForm} preview={true} removeInputForm={removeInputForm}/>
+          } else if (item.type === 'select') {
+            return <SelectInput key={index} dataInput={item} addInputForm={addInputForm} preview={true} removeInputForm={removeInputForm}/>
+          } else {
+            return <TextInput key={index} dataInput={item} addInputForm={addInputForm} preview={true} removeInputForm={removeInputForm}/>
+          }
+        })}
+      </div>
     </div>
   );
 }
-
-export default App;

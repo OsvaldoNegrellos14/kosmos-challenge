@@ -1,38 +1,107 @@
 .App {
-  text-align: center;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50vh, 1fr));
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.list-inputs {
+  padding: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.form-inputs {
+  padding: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container-input {
+  width: 100%;
+  margin: 20px 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+}
+
+.container-radio {
+  width: 70%;
+}
+
+.style-label {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.style-input {
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  width: 70%;
+  height: 30px;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #333;
+  outline: none;
+  margin-right: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.style-select {
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  width: 70%;
+  height: 30px;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #333;
+  outline: none;
+  margin-right: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.style-radio {
+  border: 1px solid #ccc;
+  transition: all 0.3s ease-in-out;
+  
+}
+
+.style-select:hover {
+  border: 1px solid #333;
+  cursor: pointer;
+}
+
+.button-style {
+  border-radius: 10px;
+  border: 1px solid rgb(64, 202, 64);
+  background-color: rgb(64, 202, 64);
+  padding: 5px;
+  height: 30px;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
   color: white;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
-}
+/* .button-style:hover {
+  border: 1px solid rgb(64, 202, 64);
+  cursor: pointer;
+  background-color: white;
+  color: rgb(64, 202, 64);
+} */
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button-delete-style {
+  border-radius: 10px;
+  border: 1px solid white;
+  background-color: red;
+  padding: 5px;
+  height: 30px;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: white;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
